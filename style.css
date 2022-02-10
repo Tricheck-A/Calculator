@@ -1,0 +1,77 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    background: linear-gradient(120deg, rgba(255,255,255,1) 0%, rgb(192, 192, 192) 100%);
+    background-attachment:fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    padding: 0;
+    margin: 0;
+}
+
+div {
+    border: 1px solid black;
+}
+
+#container {
+    width: 25em;
+    height: 37.5em;
+    display: flex;
+    padding: 3em 1.5em 3em 1.5em;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#switchContainer, #calculations, #buttonContainer {
+    flex: auto;
+}
+
+#calculations {
+    flex: 0.32 1 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#numbers {
+    text-align: right;
+}
+
+#buttonContainer {
+    flex: 0.6 1 0;
+}
+
+#switchContainer {
+    flex: 0.08 1 auto;
+    display: flex;
+    justify-content: center;
+}
+
+#switch {
+    flex: 0.3 0 auto;
+}
+
+#buttonContainer {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+    padding-top: 3em;
+    column-gap: 0.8em;
+    row-gap: 1em;
+}
