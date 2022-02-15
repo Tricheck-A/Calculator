@@ -9,15 +9,25 @@
     <title>Calculator</title>
 </head>
 <body>
+
+
     <div id="container">
+
+
+        <!-- Color Mode Switch at top of the Calculator -->
         <div id="switchContainer">
             <div id="switch">
                 <img id="darkModeIcon" src="/Icons/dark_mode_black_48dp.svg">
                 <img id="lightModeIcon" src="/Icons/light_mode_black_48dp.svg">
+
+                <!-- Box for the current selected Mode -->
                 <div id ="switchSelectionDiv">
                 </div>
             </div>
         </div>
+
+
+        <!-- Box for the current calculations -->
         <div id="calculations">
             <div id="equals">
                 =
@@ -27,14 +37,20 @@
                 <p><h1>4002</h1></p>
             </div>
         </div>
+
+
+        <!-- Wave SVGs -->
         <img id="waveLight" src="/Icons/wave-1.svg">
         <img id ="waveDark" src="Icons/wave-2.svg">
+
+
+        <!-- Box for the Buttons -->
         <div id="buttonContainer">
             <button id="but7">7</button>
             <button id="but8">8</button>
             <button id="but9">9</button>
-            <button id="butDel"><img id="delIcon" src="/Icons/backspace_black_24dp.svg"></button>
-            <button id="butAc">AC</button>
+            <button id="butDel" class="specialButton"><img id="delIcon" src="/Icons/backspace_black_24dp.svg"></button>
+            <button id="butAc" class="specialButton">AC</button>
             <button id="but4">4</button>
             <button id="but5">5</button>
             <button id="but6">6</button>
@@ -51,6 +67,7 @@
             <button id="butProcent">%</button>
             <button id="butEquals">=</button>
         </div>
+
     </div>
 </body>
 </html>
