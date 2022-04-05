@@ -50,10 +50,21 @@ button {
     cursor: pointer;
 }
 
+button:hover {
+    color: #09141b;
+    background: white;
+
+}
+
 .darkButton {
     color: #09141b;
     background: white;
-    opacity: 80%;
+    opacity: 100%;
+}
+
+.darkButton:hover {
+    color: white;
+    background: #09141b;
 }
 
 
@@ -226,30 +237,18 @@ button {
 }
 
 .specialButton:hover{
-    background: #deeef8;
-}
-
-.specialButton:active {
-    background: #c8d7e0;
-}
-
-#delIcon {
-    margin-left: -0.2em;
-    margin-top: 0.2em;
+    background: #09141b;
+    color: white;
 }
 
 .specialDarkButton {
-    color: white;
-    fill: white;
     background: #09141b;
+    color: white;
 }
 
 .specialDarkButton:hover {
-    background: #0c1b24;
-}
-
-.specialDarkButton:active {
-    background: #050b0f;
+    background: white;
+    color: #09141b;
 }
 
 
@@ -278,5 +277,5 @@ button {
 }
 
 button {
-    transition: 0.1s linear;
+    transition: 0.05s linear;
 }
