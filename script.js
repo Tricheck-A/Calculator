@@ -202,8 +202,14 @@ minusButton.addEventListener('click', function () {
 });
 
 
+// EXPONENTIATION FUNCTION
 exponentButton.addEventListener('click', function () { 
-  calculation.innerHTML += '<sup>2</sup>';
+  if (calculation.innerHTML == ''){
+  result.innerHTML = result.innerHTML ** 2;
+  }
+  else if (calculation.innerHTML != ''){
+    calculation.innerHTML = calculation.innerHTML ** 2;
+  }
 });
 
 
