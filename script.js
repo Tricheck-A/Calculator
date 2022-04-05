@@ -213,9 +213,7 @@ exponentButton.addEventListener('click', function () {
 });
 
 
-
-
-// Comma & Percentage Buttons Event Listener
+// COMMA EVENT LISTENER
 commaButton.addEventListener('click', function () { 
   calculation.innerHTML += '.';
 });
@@ -233,6 +231,10 @@ percentageButton.addEventListener('click', function () {
   }
   calculation.innerHTML = lastInput;
 });
+
+
+
+
 
 
 
@@ -290,8 +292,10 @@ function operate (operator, ...nums){
 };
 
 
-let lastInput;
-let nextInput;
+
+// checks for currently used operator with currenOperator variable, and updates Display based on the operator and calculations
+
+let lastInput; 
 let currentOperator;
 
 function checkInput (){
@@ -321,20 +325,4 @@ function checkInput (){
       result.innerHTML = currentCalc;
       }
   }
-
-    /*
-  else if (currentOperator == "add"){
-    let currentCalc = operate(add, Number(calculation.innerHTML), Number(result.innerHTML));
-    calculation.innerHTML = "";
-    result.innerHTML = currentCalc;
-  }
-  */
 }
-
-
-
-
-
-
-
-// 
