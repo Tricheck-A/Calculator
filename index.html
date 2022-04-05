@@ -15,41 +15,49 @@
 
 
         <!-- Color Mode Switch at top of the Calculator -->
-        <div id="switchContainer">
+        
+        <!-- <div id="switchContainer">
             <div id="switch">
                 <img id="darkModeIcon" src="/Icons/dark_mode_black_48dp.svg">
                 <img id="lightModeIcon" src="/Icons/light_mode_black_48dp.svg">
 
                 <!-- Box for the current selected Mode -->
-                <div id ="switchSelectionDiv">
+                <!-- <div id ="switchSelectionDiv">
                 </div>
             </div>
         </div>
+         -->
+         <div id="switchContainer">
+             <input type="checkbox" class="checkbox" id="checkbox">
+             <label for = "checkbox" class="label" id="label">
+                <img id="lightModeIcon" src="/Icons/light_mode_black_48dp.svg">
+                <img id="darkModeIcon" src="/Icons/dark_mode_white_48dp.svg">
+                <div id="ball"></div>
+             </label>
+         </div>
 
 
         <!-- Box for the current calculations -->
         <div id="calculations">
             <div id="equals">
-                =
+                
             </div>
             <div id="numbers">
-                <p id="currentCalc">100 x 4 + 2 x 2</p>
-                <p><h1 id="result">4002</h1></p>
+                <p id="currentCalc"></p>
+                <p><h1 id="result"></h1></p>
             </div>
         </div>
 
 
         <!-- Wave SVGs -->
-        <img id="waveLight" src="/Icons/wave-1.svg">
-        <img id ="waveDark" src="Icons/wave-2.svg">
-
-
+        <svg id="waveLight" data-name="waveLight" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 515 501.33"><defs><style>.cls-2{fill:url(#Unbenannter_Verlauf_7);}</style><radialGradient id="Unbenannter_Verlauf_7" cx="1.84" cy="3500.61" r="0.82" gradientTransform="matrix(514.48, -25.57, 26.26, 500.83, -91761.83, -1751542.11)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#397aa1"/><stop offset="1" stop-color="#1c4b6d"/></radialGradient></defs><path id="Schnittmenge_3" data-name="Schnittmenge 3" class="cls-2" d="M1531.12,1523.73v447.09a30,30,0,0,1-30,30h-455a30,30,0,0,1-30-30V1511.1c63.52,19.86,151.67,31.18,260,4.72,47.82-11.69,89.61-16.34,125.83-16.34C1457.52,1499.48,1500,1510.43,1531.12,1523.73Z" transform="translate(-1016.12 -1499.48)"/></svg>
+        <svg id="waveDark" data-name="waveDark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 515 488.33"><defs><style>.cls-1{fill:url(#Unbenannter_Verlauf_4);}</style><radialGradient id="Unbenannter_Verlauf_4" cx="1.87" cy="3500.36" r="0.93" gradientTransform="matrix(514.82, 12.98, 13.69, -488.16, -47453.31, 1710375.2)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#174b6a"/><stop offset="1" stop-color="#122736"/></radialGradient></defs><path id="Schnittmenge_2" data-name="Schnittmenge 2" class="cls-1" d="M1046.12,2000.82a30,30,0,0,1-30-30V1532.69c51.83-19.7,131.39-31.63,245-3.87,114.12,27.88,205.87,13.82,270-8v450a30,30,0,0,1-30,30Z" transform="translate(-1016.12 -1512.48)"/></svg>
         <!-- Box for the Buttons -->
         <div id="buttonContainer">
             <button id="but7">7</button>
             <button id="but8">8</button>
             <button id="but9">9</button>
-            <button id="butDel" class="specialButton"><img id="delIcon" src="/Icons/backspace_black_24dp.svg"></button>
+            <button id="butDel" class="specialButton"><svg id="delIcon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#122736"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7.07L2.4 12l4.66-7H22v14zm-11.59-2L14 13.41 17.59 17 19 15.59 15.41 12 19 8.41 17.59 7 14 10.59 10.41 7 9 8.41 12.59 12 9 15.59z"/></svg>
             <button id="butAc" class="specialButton">AC</button>
             <button id="but4">4</button>
             <button id="but5">5</button>

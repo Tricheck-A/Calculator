@@ -1,10 +1,14 @@
 // CALCULATOR UI VARIABLES
 
 const themeSwitch = document.getElementById('switch');
+const container = document.getElementById('container');
+const label = document.getElementById('label');
+const ball = document.getElementById('ball');
 
 // Calculations & Result Display
 let result = document.getElementById('result');
 let calculation = document.getElementById('currentCalc');
+const equals = document.getElementById('equals');
 
 // Operator Buttons
 const multiplyButton = document.getElementById('butMultiply');
@@ -15,8 +19,10 @@ const exponentButton = document.getElementById('butExponent');
 
 // Special Buttons
 const deleteButton = document.getElementById('butDel');
+const deleteIcon = document.getElementById('delIcon');
 const clearButton = document.getElementById('butAc');
 const resultButton = document.getElementById('butResult');
+const checkbox = document.getElementById('checkbox');
 
 // Commma & Percentage Buttons
 const commaButton = document.getElementById('butComma');
@@ -33,6 +39,174 @@ const sixButton = document.getElementById('but6');
 const sevenButton = document.getElementById('but7');
 const eightButton = document.getElementById('but8');
 const nineButton = document.getElementById('but9');
+
+
+
+
+
+
+
+
+
+
+// EVENT LISTENER
+
+// Color Switch
+checkbox.addEventListener('change', function () {
+  // change Theme of Website
+  document.body.classList.toggle('dark');
+  label.classList.toggle('dark');
+  ball.classList.toggle('dark');
+  container.classList.toggle('dark');
+  nullButton.classList.toggle('darkButton');
+  oneButton.classList.toggle('darkButton');
+  twoButton.classList.toggle('darkButton');
+  threeButton.classList.toggle('darkButton');
+  fourButton.classList.toggle('darkButton');
+  fiveButton.classList.toggle('darkButton');
+  sixButton.classList.toggle('darkButton');
+  sevenButton.classList.toggle('darkButton');
+  eightButton.classList.toggle('darkButton');
+  nineButton.classList.toggle('darkButton');
+  multiplyButton.classList.toggle('darkButton');
+  divideButton.classList.toggle('darkButton');
+  plusButton.classList.toggle('darkButton');
+  minusButton.classList.toggle('darkButton');
+  exponentButton.classList.toggle('darkButton');
+  percentageButton.classList.toggle('darkButton');
+  commaButton.classList.toggle('darkButton');
+  resultButton.classList.toggle('darkButton');
+  deleteButton.classList.toggle('specialDarkButton');
+  deleteIcon.classList.toggle('specialDarkButton');
+  clearButton.classList.toggle('specialDarkButton');
+});
+
+
+
+// Number Buttons Event Listener
+nullButton.addEventListener('click', function () { 
+  calculation.innerHTML += '0';
+});
+
+oneButton.addEventListener('click', function () { 
+  calculation.innerHTML += '1';
+});
+
+twoButton.addEventListener('click', function () { 
+  calculation.innerHTML += '2';
+});
+
+threeButton.addEventListener('click', function () { 
+  calculation.innerHTML += '3';
+});
+
+fourButton.addEventListener('click', function () { 
+  calculation.innerHTML += '4';
+});
+
+fiveButton.addEventListener('click', function () { 
+  calculation.innerHTML += '5';
+});
+
+sixButton.addEventListener('click', function () { 
+  calculation.innerHTML += '6';
+});
+
+sevenButton.addEventListener('click', function () { 
+  calculation.innerHTML += '7';
+});
+
+eightButton.addEventListener('click', function () { 
+  calculation.innerHTML += '8';
+});
+
+nineButton.addEventListener('click', function () { 
+  calculation.innerHTML += '9';
+});
+
+
+
+
+// Operator Buttons Event Listener
+multiplyButton.addEventListener('click', function () { 
+  lastInput = calculation.innerHTML;
+  let currentCalc = operate(multiply, Number(lastInput), Number(result.innerText));
+  result.innerHTML = currentCalc;
+  calculation.innerHTML = "";
+  equals.innerHTML = "×";
+  currentOperator = "multiply";
+  
+});
+
+divideButton.addEventListener('click', function () { 
+
+  calculation.innerHTML += ' ÷ ';
+});
+
+plusButton.addEventListener('click', function () {
+    lastInput = calculation.innerHTML;
+    let currentCalc = operate(add, Number(lastInput), Number(result.innerText));
+    result.innerHTML = currentCalc;
+    calculation.innerHTML = "";
+    equals.innerHTML = "+";
+    currentOperator = "add";
+});
+
+minusButton.addEventListener('click', function () { 
+  lastInput = calculation.innerHTML;
+  // Falls Result aktuell leer ist --> Vermeidung von negativer Zahl zu Beginn der Berechnung
+  if (result.innerHTML == ''){
+    let currentCalc = operate(subtract, Number(lastInput), Number(result.innerText));
+    result.innerHTML = currentCalc
+  // Falls Result nicht mehr leer ist
+  } else {
+    let currentCalc = operate(subtract, Number(result.innerText), Number(lastInput));
+    result.innerHTML = currentCalc
+  }
+  calculation.innerHTML = "";
+  equals.innerHTML = "−";
+  currentOperator = "subtract";
+});
+
+exponentButton.addEventListener('click', function () { 
+  calculation.innerHTML += '<sup>2</sup>';
+});
+
+
+
+
+// Comma & Percentage Buttons Event Listener
+commaButton.addEventListener('click', function () { 
+  calculation.innerHTML += '.';
+});
+
+percentageButton.addEventListener('click', function () { 
+  calculation.innerHTML += '% ';
+});
+
+
+
+
+// Special Buttons Event Listener
+clearButton.addEventListener('click', function () { 
+  calculation.innerHTML = ' ';
+  result.innerHTML = '';
+  equals.innerHTML = ' ';
+});
+
+deleteButton.addEventListener('click', function () { 
+  calculation.innerHTML = calculation.innerHTML.slice(0, -1);
+});
+
+resultButton.addEventListener('click', function () { 
+  equals.innerHTML = '=';
+  checkInput();
+});
+
+
+
+
+
 
 
 
@@ -64,3 +238,43 @@ const divide = function(array) {
 function operate (operator, ...nums){
   return operator(nums);
 };
+
+
+let lastInput;
+let nextInput;
+let currentOperator;
+
+function checkInput (){
+  if (currentOperator == "add"){
+    let currentCalc = operate(add, Number(calculation.innerHTML), Number(result.innerHTML));
+    calculation.innerHTML = "";
+    result.innerHTML = currentCalc;
+  }
+  else if (currentOperator == "subtract"){
+    let currentCalc = operate(subtract, Number(result.innerHTML), Number(calculation.innerHTML));
+    calculation.innerHTML = "";
+    result.innerHTML = currentCalc;
+  }
+
+  else if (currentOperator == "multiply"){
+    let currentCalc = operate(multiply, Number(calculation.innerHTML), Number(result.innerHTML));
+    calculation.innerHTML = "";
+    result.innerHTML = currentCalc;
+  }
+
+    /*
+  else if (currentOperator == "add"){
+    let currentCalc = operate(add, Number(calculation.innerHTML), Number(result.innerHTML));
+    calculation.innerHTML = "";
+    result.innerHTML = currentCalc;
+  }
+  */
+}
+
+
+
+
+
+
+
+// 

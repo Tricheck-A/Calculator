@@ -11,7 +11,7 @@ html {
 }
 
 body {
-    background: linear-gradient(120deg, rgba(255,255,255,1) 0%, rgb(192, 192, 192) 100%);
+    background: linear-gradient(120deg, #ffffff 0%, #c0c0c0 100%);
     background-attachment:fixed;
     font-family: 'Roboto', sans-serif;
     display: flex;
@@ -19,6 +19,12 @@ body {
     align-items: center;
     height:100vh;
 }
+
+
+body.dark {
+    background: linear-gradient(120deg, #3d3d3d 0%, #1f1f1f 100%);
+}
+
 
 h1 {
     padding: 0;
@@ -44,12 +50,10 @@ button {
     cursor: pointer;
 }
 
-button:hover {
-    background: #0d1f2b;
-}
-
-button:active {
-    background: black;
+.darkButton {
+    color: #09141b;
+    background: white;
+    opacity: 80%;
 }
 
 
@@ -66,10 +70,15 @@ button:active {
     width: 25em;
     height: 37.5em;
     display: flex;
-    padding: 3em 1.5em 3em 1.5em;
+    padding: 2.8em 1.5em 3em 1.5em;
     flex-direction: column;
     justify-content: space-between;
     border-radius: 1.7em;
+}
+
+#container.dark {
+    background: linear-gradient(120deg, rgba(255,255,255,1) 0%, rgb(192, 192, 192) 100%);
+    color: #09141b;
 }
 
 #calculations, #buttonContainer {
@@ -86,7 +95,7 @@ button:active {
 /* SWITCH BUTTON STYLING */
 
 #switchContainer {
-    flex: 0.06 1 auto;
+    flex: 0.03 1 auto;
     display: flex;
     justify-content: center;
 }
@@ -106,24 +115,54 @@ button:active {
     border-radius: 500px;
 }
 
-#darkModeIcon {
+.checkbox {
+    display: none;
     position: absolute;
-    margin-left: 0.9em;
-    margin-top: 0.3em;
-    height: 1em;
-    order: 2
+}
+
+.checkbox:checked + #label #ball{
+    left: 49%;
+}
+
+#darkModeIcon {
+    height: 1.2em;
+    margin-right: 0.6em;
 }
 
 #lightModeIcon {
-    position: absolute;
-    margin-left: 3.5em;
-    margin-top: 0.3em;
-    height: 1em;
-    order: 2;
+    height: 1.2em;
+    margin-left: 0.6em;
 }
 
+#label {
+    flex: 0.12 0 auto;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 500px;
+    cursor: pointer;
+    position: relative;
+}
 
+#label.dark {
+    border: 2px solid #09141b;
+}
 
+#ball {
+    background: #fff;
+    border-radius: 500px;
+    position: absolute;
+    top: 0em;
+    left: 0em;
+    height: 100%;
+    width: 3em;
+    transition: 0.1s linear;
+}
+
+#ball.dark {
+    background: #09141b;
+}
 
 
 
@@ -132,7 +171,7 @@ button:active {
 /* CALCULATIONS STYLING */
 
 #calculations {
-    flex: 0.32 1 0;
+    flex: 0.25 1 0;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -178,6 +217,7 @@ button:active {
     column-gap: 0.8em;
     row-gap: 1em;
     clip-path: url(#waveLight);
+    cursor: pointer;
 }
 
 .specialButton {
@@ -198,6 +238,19 @@ button:active {
     margin-top: 0.2em;
 }
 
+.specialDarkButton {
+    color: white;
+    fill: white;
+    background: #09141b;
+}
+
+.specialDarkButton:hover {
+    background: #0c1b24;
+}
+
+.specialDarkButton:active {
+    background: #050b0f;
+}
 
 
 
@@ -222,4 +275,8 @@ button:active {
     width: 25em;
     height: 25em;
     clip-path: url(#buttonContainer);
+}
+
+button {
+    transition: 0.1s linear;
 }
