@@ -123,82 +123,94 @@ nineButton.addEventListener('click', function () {
   calculation.innerHTML += '9';
 });
 
+//Keyboard Event Listeners
+document.addEventListener('keydown', function (e){
+  if (e.key === '0'){
+    calculation.innerHTML += '0';
+  }
+  if (e.key === '1'){
+    calculation.innerHTML += '1';
+  }
+  if (e.key === '2'){
+    calculation.innerHTML += '2';
+  }
+  if (e.key === '3'){
+    calculation.innerHTML += '3';
+  }
+  if (e.key === '4'){
+    calculation.innerHTML += '4';
+  }
+  if (e.key === '5'){
+    calculation.innerHTML += '5';
+  }
+  if (e.key === '6'){
+    calculation.innerHTML += '6';
+  }
+  if (e.key === '7'){
+    calculation.innerHTML += '7';
+  }
+  if (e.key === '8'){
+    calculation.innerHTML += '8';
+  }
+  if (e.key === '9'){
+    calculation.innerHTML += '9';
+  }
+  if (e.key === '+'){
+    addCalculation();
+  }
+
+  if (e.key === '-'){
+    subtractCalculation();
+  }
+
+  if (e.key === '*'){
+    multiplyCalculation();
+  }
+
+  if (e.key === '/'){
+    divideCalculation();
+  }
+
+  if (e.keyCode === 13 || e.which === 13){
+    equals.innerHTML = '=';
+    checkInput();
+  }
+
+  if (e.keyCode === 8 || e.which === 8){
+    calculation.innerHTML = calculation.innerHTML.slice(0, -1);
+  }
+
+  if (e.key === '.'){
+    calculation.innerHTML += '.';
+  }
+});
+
 
 
 
 // Operator Buttons Event Listener
 
-// MULTIPLY FUNCTION
+// MULTIPLY BUTTON
 multiplyButton.addEventListener('click', function () { 
-  lastInput = calculation.innerHTML;
-    // Falls Result aktuell leer ist --> Vermeidung von negativer Zahl zu Beginn der Berechnung
-  if (result.innerHTML == ''){
-    let currentCalc = operate(multiply, Number(lastInput), 1);
-    result.innerHTML = currentCalc;
-  } 
-  else if ((result.innerHTML != '') && (calculation.innerHTML == '')){
-    let currentCalc = operate(multiply, 1, Number(result.innerText));
-    result.innerHTML = currentCalc;
-  } else {
-  let currentCalc = operate(multiply, Number(lastInput), Number(result.innerText));
-  result.innerHTML = currentCalc;
-  }
-  calculation.innerHTML = "";
-  equals.innerHTML = "×";
-  currentOperator = "multiply";
+  multiplyCalculation();
 });
 
 
-// DIVISION FUNCTION
+// DIVISION BUTTON
 divideButton.addEventListener('click', function () { 
-  lastInput = calculation.innerHTML;
-  // Falls Result aktuell leer ist --> Vermeidung von negativer Zahl zu Beginn der Berechnung
-if (result.innerHTML == ''){
-  let currentCalc = operate(divide, Number(lastInput), 1);
-  result.innerHTML = currentCalc;
-} 
-else if (calculation.innerHTML == '0'){
-  result.innerHTML = 'DIVISION 0 ERROR';
-}
-else if ((result.innerHTML != '') && (calculation.innerHTML == '')){
-  let currentCalc = operate(divide, Number(result.innerText), 1,);
-  result.innerHTML = currentCalc;
-} else {
-let currentCalc = operate(divide, Number(result.innerText), Number(lastInput));
-result.innerHTML = currentCalc;
-}
-calculation.innerHTML = "";
-equals.innerHTML = "÷";
-currentOperator = "divide";
+  divideCalculation();
 });
 
 
-// ADDITION FUNCTION
+// ADDITION BUTTON
 plusButton.addEventListener('click', function () {
-    lastInput = calculation.innerHTML;
-    let currentCalc = operate(add, Number(lastInput), Number(result.innerText));
-    result.innerHTML = currentCalc;
-    calculation.innerHTML = "";
-    equals.innerHTML = "+";
-    currentOperator = "add";
+  addCalculation();
 });
 
 
-// SUBTRACTION FUNCTION
+// SUBTRACTION BUTTON
 minusButton.addEventListener('click', function () { 
-  lastInput = calculation.innerHTML;
-  // Falls Result aktuell leer ist --> Vermeidung von negativer Zahl zu Beginn der Berechnung
-  if (result.innerHTML == ''){
-    let currentCalc = operate(subtract, Number(lastInput), Number(result.innerText));
-    result.innerHTML = currentCalc;
-  // Falls Result nicht mehr leer ist
-  } else {
-    let currentCalc = operate(subtract, Number(result.innerText), Number(lastInput));
-    result.innerHTML = currentCalc
-  }
-  calculation.innerHTML = "";
-  equals.innerHTML = "−";
-  currentOperator = "subtract";
+  subtractCalculation();
 });
 
 
@@ -283,6 +295,78 @@ const multiply = function(array) {
 const divide = function(array) {
   return array.reduce((total, current) => total / current);
 };
+
+
+
+  // ADDITION FUNCTION
+function addCalculation (){
+  lastInput = calculation.innerHTML;
+  let currentCalc = operate(add, Number(lastInput), Number(result.innerText));
+  result.innerHTML = currentCalc;
+  calculation.innerHTML = "";
+  equals.innerHTML = "+";
+  currentOperator = "add";
+};
+
+  // SUBTRACTION FUNCTION
+function subtractCalculation (){
+  lastInput = calculation.innerHTML;
+  // Falls Result aktuell leer ist --> Vermeidung von negativer Zahl zu Beginn der Berechnung
+  if (result.innerHTML == ''){
+    let currentCalc = operate(subtract, Number(lastInput), Number(result.innerText));
+    result.innerHTML = currentCalc;
+  // Falls Result nicht mehr leer ist
+  } else {
+    let currentCalc = operate(subtract, Number(result.innerText), Number(lastInput));
+    result.innerHTML = currentCalc
+  }
+  calculation.innerHTML = "";
+  equals.innerHTML = "−";
+  currentOperator = "subtract";
+}
+
+  // MULTIPLICATION FUNCTION
+function multiplyCalculation (){
+  lastInput = calculation.innerHTML;
+  // Falls Result aktuell leer ist --> Vermeidung von negativer Zahl zu Beginn der Berechnung
+  if (result.innerHTML == ''){
+    let currentCalc = operate(multiply, Number(lastInput), 1);
+    result.innerHTML = currentCalc;
+  } 
+  else if ((result.innerHTML != '') && (calculation.innerHTML == '')){
+    let currentCalc = operate(multiply, 1, Number(result.innerText));
+    result.innerHTML = currentCalc;
+  } else {
+  let currentCalc = operate(multiply, Number(lastInput), Number(result.innerText));
+  result.innerHTML = currentCalc;
+  }
+  calculation.innerHTML = "";
+  equals.innerHTML = "×";
+  currentOperator = "multiply";
+  };
+
+  // DIVISION FUNCTION
+function divideCalculation (){
+  lastInput = calculation.innerHTML;
+  // Falls Result aktuell leer ist --> Vermeidung von negativer Zahl zu Beginn der Berechnung
+  if (result.innerHTML == ''){
+    let currentCalc = operate(divide, Number(lastInput), 1);
+    result.innerHTML = currentCalc;
+  } 
+  else if (calculation.innerHTML == '0'){
+    result.innerHTML = 'DIVISION 0 ERROR';
+  }
+  else if ((result.innerHTML != '') && (calculation.innerHTML == '')){
+    let currentCalc = operate(divide, Number(result.innerText), 1,);
+    result.innerHTML = currentCalc;
+  } else {
+  let currentCalc = operate(divide, Number(result.innerText), Number(lastInput));
+  result.innerHTML = currentCalc;
+  }
+  calculation.innerHTML = "";
+  equals.innerHTML = "÷";
+  currentOperator = "divide";
+}
 
 
 
