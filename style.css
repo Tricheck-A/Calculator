@@ -143,21 +143,21 @@ button:hover {
 }
 
 .checkbox:checked + #label #ball{
-    left: 49%;
+    left: 52%;
 }
 
 #darkModeIcon {
     height: 1.2em;
-    margin-right: 0.6em;
+    margin-right: 0.01em;
 }
 
 #lightModeIcon {
     height: 1.2em;
-    margin-left: 0.6em;
+    margin-left: 0.01em;
 }
 
 #label {
-    flex: 0.12 0 auto;
+    flex: 0.01 0 auto;
     border: 2px solid white;
     display: flex;
     align-items: center;
